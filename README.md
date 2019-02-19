@@ -1,45 +1,93 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+getaroom.io
+====
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+> Pretty nifty cross device and cross browser WebRTC audio/video conferencing demo of [SkylinkJS](http://github.com/Temasys/SkylinkJS) using [React](http://facebook.github.io/react/).
+> Try it out at http://getaroom.io
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+#### Demo Query Parameters
 
----
+| Parameter | Description |
+| --------- | ----------- |
+| `mcu` | Set to `1` or `true` to enable MCU connections |
+| `forceTurn` | Set to `1` or `true` to force TURN connections |
+| `forcePlugin` | Set to `1` or `true` to force Temasys WebRTC Plugin in Safari 11 |
+| `media` | Set to `av` to fetch audio and video media, `v` to fetch only video media, `a` to fetch only audio media and `none` to no media. |
+| `signalingNode` | Configure custom Temasys Signaling server URL (e.g. `https://signaling.temasys.io:3443`) |
+| `turnNode` | Configure custom Temasys TURN server URL (e.g. `turn:turn.temasys.io:3478`) |
+| `appkeyId` | Configure custom App key ID for testing purposes on `getaroom.io`. |
+| `appkeySecret` | Configure custom App key secret for the configured `appkeyId` for testing purposes on `getaroom.io`. |
+| `res` | Set to `fhd` to fetch FHD resolution, `hd` to fetch HD resolution, `vga` to fetch VGA resolution and `qvga` to fetch QVGA resolution. *If local video appears black, it means it failed to retrieve the resolution because it is not available.* |
 
-## Edit a file
+Setup / Development
+----
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+Skip relevant steps when required.
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+#### 1. Install required dependencies
 
----
+Do `npm install`, and `npm install grunt grunt-cli --save-dev` if required.
 
-## Create a file
+Install node.js [here](https://nodejs.org/en/download/) as it should also include with npm.
 
-Next, you’ll add a new file to this repository.
+#### 2. Make modifications in `source/` folder.
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+In the contents of the `source/` folder:
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+- `configs.jsx`: Defines the App Keys based on the different environment. Modify `local` only. You can [sign up for your own App key here](https://console.temasys.io).
 
----
+- `index.html`: Defines the HTML file for getaroom app. This contains the Google Analytics settings in which you can modify for your custom getaroom app.
 
-## Clone a repository
+- `jsx/`: The React JSX files for the Javascript end.
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+   - `constants.jsx`: Defines the getaroom constants used across the getaroom app.
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+   - `loader.jsx`: Defines the dependencies and libraries versions.
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+   - `main.jsx`: Handles the Temasys Web SDK connection.
+
+   - `utils.jsx`: Handles the utilities functionalities used across the getaroom app.
+
+   - `components/controls.jsx`: Handles the getaroom app controls.
+
+   - `components/userareas.jsx`: Handles the user video element.
+
+- `js/`: The generated output Javascript files from the React JSX files. Do not modify changes on here.
+
+   - `libs/`: Stores the custom dependencies Javascript files if needed.
+
+- `img/`: Stores the `jsx/components/controls.jsx` icons.
+
+- `assets/`: Stores the getaroom logo.
+
+- `styles/`: The Stylus files for the CSS end. Dont not modify the `.css` files in there as they are auto-generated.
+
+   - `mixins/`: The mixin files.
+
+   - `app.styl`: The getaroom app styling.
+
+   - `fonts.styl`: The getaroom font styling if needed.
+
+- `ca.crt`: The CA cert file for localhost webserver `https:`. This is self-signed. Replace for your own app when required.
+
+- `server.crt`: The server cert file for localhost webserver `https:`. This is self-signed. Replace for your own app when required.
+
+- `server.key`: The certificate private key for localhost webserver `https:`. This is self-signed. Replace for your own app when required.
+
+
+#### 3. Start testing modifications
+
+Run `grunt dev` to compile the React JSX (js) and Stylus (css) files.
+
+This opens `https://localhost:8085` in your browser as it runs localhost webserver on your device.
+
+#### 4. Make it production ready
+
+Once ready for production, run `grunt stage` to create a `staging/` folder which contains the compiled and minified version of the application.
+
+Then run `grunt publish` to move the `staging/` contents to `publish/` folder. Use files from the `publish/` folder to host on your own webserver.
+
+
+License
+----
+
+[APACHE 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)

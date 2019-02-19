@@ -1,0 +1,710 @@
+@charset 'utf-8'
+@import 'fonts'
+@import 'mixins/nib'
+@import 'mixins/normalize'
+@import 'mixins/loader'
+
+color1 = #1abc9c
+color2 = #3498db
+color3 = #ff688b
+color4 = rgba(191,255,0,0.2)
+
+
+body
+    font-family 'Open Sans', Helvetica, Arial, sans-serif
+    user-select none
+    background #000
+
+body > a {
+    position absolute
+    top 0
+    right 0
+    z-index 900
+}
+
+#app
+    perspective 500px
+    perspective-origin 50% 50%
+    overflow hidden
+
+#app, #app > div, #app > div > div, #userareas, #controls, #controls > div
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+
+#controls
+    left 50%
+    top 50%
+    margin -300px -200px
+    border-radius 8px
+    height 600px
+    width 400px
+    background rgba(255,255,255,0.7)
+    transform scale(.95)
+    transform-origin 70% 50%
+    transition all .1s ease-in
+    opacity 0
+    color darken(color2, 20%)
+    z-index 1
+
+    button
+        position relative
+        margin 12px
+        width 70px
+        height 70px
+        border-radius 35px
+        background-color rgba(255,255,255,.08)
+        outline 0
+        text-align center
+        border 2px solid darken(color2, 10%)
+
+        &#videoMute
+            float left
+            font-face Helvetica Neue, Helvetica, Arial, sans-serif
+            margin-left 65px
+            background-image url(/img/camera.svg)
+            background-repeat no-repeat
+            background-position 50% 50%
+            background-size 30% 30%
+
+        &#audioMute
+            float left
+            font-face Helvetica Neue, Helvetica, Arial, sans-serif
+            background-image url(/img/microphone.svg)
+            background-repeat no-repeat
+            background-position 50% 50%
+            background-size 40% 40%
+
+        &#screenshare
+            float left
+            display none
+            font-face Helvetica Neue, Helvetica, Arial, sans-serif
+            background-image url(/img/screen.svg)
+            background-repeat no-repeat
+            background-position 50% 50%
+            background-size 50% 50%
+
+        &#recording
+            float left
+            font-face Helvetica Neue, Helvetica, Arial, sans-serif
+            background-image url(/img/recording.svg)
+            background-repeat no-repeat
+            background-position 50% 50%
+            background-size 40% 40%
+            margin-left: 24px !important;
+
+        &#roomLock
+            float left
+            font-face Helvetica Neue, Helvetica, Arial, sans-serif
+            background-image url(/img/lock.svg)
+            background-repeat no-repeat
+            background-position 50% 50%
+            background-size 40% 40%
+
+        &#roomLock.on
+            background-image url(/img/unlock.svg)
+            background-position 50% 50%
+            background-size 40% 40%
+
+        &.muted:before
+            content ""
+            display block
+            position absolute
+            left 50%
+            top 50%
+            margin -25px -2px
+            transform rotate(45deg)
+            width 4px
+            height 50px
+            background darken(color3, 20%)
+
+        &.muted:after
+            content ""
+            display block
+            border 4px solid darken(color3, 20%)
+            border-radius 25px
+            position absolute
+            left 50%
+            top 50%
+            width 42px
+            height 42px
+            margin -25px
+            background none
+
+        &:hover
+            background-color rgba(255,255,255,.2)
+
+        &:active
+            background-color rgba(200,200,200,.3)
+
+        &.on
+            background-color color4
+
+            &:hover
+                background-color lighten(color4, 10%)
+
+            &:active
+                background-color darken(color4, 20%)
+
+    button.mainControl
+        width 392px
+        height auto
+        display inline-block
+        font-size 1.3em
+        margin 0
+        padding 15px 25px
+        background 0
+        border 0
+        border-radius 6px
+        position absolute
+        left 4px
+        bottom 4px
+        color #fff
+
+        &.joinRoom
+            background darken(color1, 20%)
+
+            &:active
+                background darken(color1, 30%)
+
+        &.leaveRoom
+            background darken(color3, 40%)
+
+            &:active
+                background darken(color3, 50%)
+
+    > div > div
+        text-align center
+        font-weight 700
+
+    .logo
+        color #333
+        text-align center
+        font-family Lobster
+        font-size 4.2em
+        padding 100px 25px 5px
+        text-shadow -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 2px 2px 0 #fff, 3px 3px 0 #fff, 4px 4px 0 #fff, 5px 5px 0 #fff
+        transition all .25s ease-in
+
+        &.joinRoom
+            padding-top 160px
+
+        &.recording
+            padding-top 80px
+
+    p
+        margin 0
+        padding 0 55px 25px
+
+    a
+        color darken(color2, 20%)
+
+    p:nth-child(2)
+        font-weight 200
+        padding-top 10px
+        padding-bottom 25px
+
+    .statusMessage
+        padding 5px 15px!important
+        text-transform uppercase
+        font-size 14px
+
+    .displayName,
+    .link
+        margin 15px 0 0 25%
+        left 0
+        right 0
+        font-weight 200
+        text-align left
+
+        &.top
+            //bottom 120px
+
+        &.joinRoom
+            position absolute
+            bottom 90px
+            margin 0 auto
+            text-align center
+
+        input[type=text]
+            width 330px
+            text-align center
+            font-size 1em
+            border-radius 4px
+            padding 5px 8px
+            background none
+            border 1px solid color2
+            color darken(color2, 20%)
+
+        input[type=checkbox]
+            vertical-align bottom
+
+    .displayName
+        bottom 165px
+        border 2px solid darken(color2, 10%)
+        width 345px
+        left 25px
+        right 25px
+        border-radius 4px
+        position absolute
+        margin-left 0
+
+        span,
+        input[type=text]
+            display inline-block
+            vertical-align top
+            padding 6px 8px 7px
+            font-size 14px
+            margin 0
+
+        span
+            background darken(color2, 10%)
+            color #fff
+            width 95px
+            text-align center
+            padding-top 8px
+            padding-bottom 7px
+
+        input[type=text]
+            border 0
+            float right
+            width 218px
+
+    nav
+        position relative
+        z-index 15
+
+    nav button
+        border 0
+        position relative
+        margin 8px -2px 0 8px
+        width 14px
+        padding 0
+        line-height 14px
+        height 14px
+        overflow hidden
+        display inline-block
+        font bold 11px/14px 'Helvetica', 'Arial'
+        text-align center
+        color #888
+        border-radius 7px
+        background rgba(200,200,200,.4)
+        pointer default
+
+        &.close
+            background darken(color3, 30%)
+            color darken(color3, 50%)
+
+            &:after
+                display inline-block
+
+            &:hover
+                background darken(color3, 30%)
+
+            &:active
+                background darken(color3, 40%)
+
+        &:hover
+            background rgba(200,200,200,.4)
+
+    nav:hover button.close:after
+    	content 'x'
+
+
+.enableScreensharing #controls button
+    &#videoMute
+        margin-left 24px !important
+
+    &#screenshare
+        display block !important
+
+
+.controls #controls
+    transform scale(1)
+    opacity 1
+    z-index 10
+
+
+#userareas
+    z-index 5
+
+    .userarea
+        overflow hidden
+        position relative
+        width 25vw
+        height 25vh
+        display inline-block
+
+        > div
+            position absolute
+            width 200%
+            height 200%
+            margin -20% -50%
+            background #000
+            transition all .5s ease-out
+
+            video, object, canvas
+                width 100%
+                height 100%
+
+            canvas + video
+                display none
+
+    &.split1, &.split2, &.split3
+        .userarea
+            width auto
+            height auto
+            position absolute
+            top 0
+            left 0
+            right 0
+            bottom 0
+
+            > div
+                width 100vw
+                height 100vh
+                margin 0
+
+    &.split4
+        .userarea
+            width auto
+            height auto
+            position absolute
+            top 0
+            left 0
+            right 0
+            bottom 0
+
+        .userarea:nth-child(1)
+            right 50%
+            bottom 50%
+
+        .userarea:nth-child(2)
+            left 50%
+            bottom 50%
+
+        .userarea:nth-child(3)
+            top 50%
+            right 50%
+
+        .userarea:nth-child(4)
+            top 50%
+            left 50%
+
+    &.split5
+        .userarea:nth-child(1)
+            width 33.33333vw
+            height 50vh
+
+        .userarea:nth-child(2)
+            width 33.33333vw
+            height 50vh
+
+        .userarea:nth-child(3)
+            width 33.33333vw
+            height 50vh
+
+        .userarea:nth-child(4)
+            width 50vw
+            height 50vh
+
+        .userarea:nth-child(5)
+            width 50vw
+            height 50vh
+
+    &.split6
+        .userarea
+            width 33.33333vw
+            height 50vh
+
+    &.split7, &.split8, &.split9
+        .userarea
+            width 33.33333vw
+            height 33.33333vh
+
+    &.split10, &.split11, &.split12
+        .userarea
+            width 25vw
+            height 33.33333vh
+
+    &.split13, &.split14, &.split15, &.split16
+        .userarea
+            width 25vw
+            height 25vh
+
+    &.split17, &.split18, &.split19, &.split20
+        .userarea
+            width 20vw
+            height 25vh
+
+    #stream-self
+        transform rotateY(-180deg);
+
+    .userInfo
+        position absolute
+        text-align center
+        color #fff
+        text-shadow 1px 1px 0 #000
+        width 200px
+        margin 0 -100px
+        left 50%
+        top 23%
+
+    &.screensharing
+        width 25vw
+        right auto
+
+        #us0
+            transform rotateY(0deg);
+
+        .userarea
+            height 33.3vh
+
+            > div
+                width 120%
+                height 120%
+                margin -10% -12%
+
+        .userarea.screensharing
+            position absolute
+            left 25vw
+            top 0
+            width 75vw
+            height 100vh
+            line-height 155vh
+
+            > div
+                display inline-block
+                vertical-align bottom
+                margin 0
+                width 100%
+                height 100%
+
+            .userInfo
+                top auto
+
+
+@media all and (max-width:1000px)
+    #userareas
+        &.screensharing
+            width 100vw
+            height 33.3vh
+            right 0
+            left 0
+            bottom 0
+            top auto
+
+            .userarea
+                height 33.3vh
+                width 33.3vw
+
+            .userarea.screensharing
+                top -66.6vh
+                left 0
+                width 100vw
+                height 66.6vh
+                line-height 100vh
+
+
+@media all and (min-width: 680px)
+    #userareas
+        &.split2
+            .userarea:nth-child(1)
+                right 50%
+
+            .userarea:nth-child(2)
+                left 50%
+
+            .userarea > div
+                width 100vw
+                height 100vh
+                margin 0 -25vw
+
+        &.split3
+            .userarea:nth-child(1)
+                right 66.66666%
+
+            .userarea:nth-child(2)
+                left 33.33333%
+                right 33.33333%
+
+            .userarea:nth-child(3)
+                left 66.66666%
+
+            .userarea > div
+                width 100vw
+                height 100vh
+                margin 0 -33.33333vw
+
+@media all and (max-width: 679px)
+    #userareas
+        &.split2
+            .userarea:nth-child(1)
+                bottom 50%
+
+            .userarea:nth-child(2)
+                top 50%
+
+            .userarea > div
+                margin -25vh 0
+
+            .userInfo
+                top 36%
+
+        &.split3
+            .userarea:nth-child(1)
+                bottom 66.66666%
+
+            .userarea:nth-child(2)
+                top 33.33333%
+                bottom 33.33333%
+
+            .userarea:nth-child(3)
+                top 66.66666%
+
+            .userarea > div
+                margin -33.33333vh 0
+
+            .userInfo
+                top 40%
+
+#noUser
+    top 0
+    left 0
+    right 0
+    bottom 0
+    position absolute
+    overflow hidden
+    vendor(filter, blur(100px))
+
+    &:after
+        display block
+        content ""
+        padding 400px
+        margin -400px
+        position absolute
+        left 30%
+        top 35%
+        border-radius 400px
+        background linear-gradient(top left, color1 0%, color2 100%)
+        //animation move1 30s linear infinite
+
+    &:before
+        display block
+        content ""
+        padding 600px
+        margin -600px
+        position absolute
+        left 80%
+        top 70%
+        border-radius 600px
+        background linear-gradient(bottom left, color2 0%, color3 100%)
+        //animation move2 23s linear infinite
+
+@keyframes move1
+    0%, 100%
+        transform translate(0,0) rotateZ(0) scale(1)
+    20%
+        transform translate(50px, 30px) rotateZ(45deg)
+    40%
+        transform translate(20px, 80px) scale(1.5)
+    60%
+        transform translate(-90px, 50px) rotateZ(200deg)
+    80%
+        transform translate(-40px, -30px) scale(1.05)
+
+@keyframes move2
+    0%, 100%
+        transform translate(0,0) rotateZ(0) scale(1)
+    20%
+        transform translate(-50px, -30px) rotateZ(-85deg)
+    40%
+        transform translate(-20px, -80px)
+    60%
+        transform translate(90px, 10px) rotateZ(-230deg) scale(.82)
+    80%
+        transform translate(40px, 50px)
+
+
+#chat
+    position absolute
+    bottom 0
+    left 50%
+    width 400px
+    margin 0 -200px;
+    background rgba(255,255,255,0.7)
+    border-radius 8px 8px 0 0
+    box-shadow 5px 5px 8px rgba(0,0,0,.2)
+    z-index 9
+    opacity .6
+
+    #input
+        height 0
+        transition height .2s linear
+
+    #messages
+        width 100%
+        min-height 100%
+        max-height 50px
+        overflow-x hidden
+        overflow-y auto
+        position relative
+        -webkit-overflow-scrolling touch
+
+        .message
+            width 380px
+            padding 10px 10px 5px
+
+            .name
+                display block
+                padding-bottom 5px
+                font-weight bold
+
+            .body
+                p
+                    margin 0
+                p + p
+                    margin-top .8em
+
+
+    #messageInput
+        border 0
+        outline 0
+        width 380px
+        font-size 1.2em
+        line-height 1.6em
+        padding 10px 13px 5px
+        border-radius 8px 8px 0 0
+        background transparent
+
+.chat #chat
+    opacity 1
+
+    #input
+        height 50px
+
+    #messages
+        max-height 250px
+
+.controls #chat
+    opacity .6
+
+    #messages
+        max-height 50px
+
+    #input
+        height 0px
+
+::-webkit-input-placeholder
+   color #777
+
+:-moz-placeholder
+   color #777
+
+::-moz-placeholder
+   color #777
+
+:-ms-input-placeholder
+   color #777
