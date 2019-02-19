@@ -288,7 +288,7 @@ define([
               ), 
               React.DOM.p(null, 
                 "Just hit the \"Start a new call\" button below and share the link.", React.DOM.br(null), React.DOM.br(null), 
-                "This app is a ", React.DOM.a({href: "https://temasys.io/platform", target: "_blank"}, "SkylinkJS"), " tech demo and you can ", React.DOM.a({href: "https://github.com/Temasys/getaroom", target: "_blank"}, "fork it on github"), "."
+                // "This app is a ", React.DOM.a({href: "https://temasys.io/platform", target: "_blank"}, "SkylinkJS"), " tech demo and you can ", React.DOM.a({href: "https://github.com/Temasys/getaroom", target: "_blank"}, "fork it on github"), "."
               )
             )
           );
