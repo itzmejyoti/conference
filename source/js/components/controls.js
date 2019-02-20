@@ -266,7 +266,7 @@ define([
       //logoClassName += app.props.state.room.states.mcuServerId ? ' recording' : '';
 
       // Push logo.
-      outputHTML.push(React.DOM.div({className: logoClassName}, "getaroom.io"));
+      // outputHTML.push(React.DOM.div({className: logoClassName}, "getaroom.io"));
 
       switch (app.props.state.state) {
         // -----------------------------
@@ -283,36 +283,36 @@ define([
           outputHTML.push(
             React.DOM.div({className: "description"}, 
               React.DOM.p(null, 
-                React.DOM.small(null, "A SkylinkJS Tech Demo"), React.DOM.br(null), React.DOM.br(null), 
-                "Start a FREE call", React.DOM.br(null), "with up to ", Configs.maxUsers, " people"
+                // React.DOM.small(null, "A SkylinkJS Tech Demo"), React.DOM.br(null), React.DOM.br(null), 
+                // "Start a FREE call", React.DOM.br(null), "with up to ", Configs.maxUsers, " people"
               ), 
               React.DOM.p(null, 
-                "Just hit the \"Start a new call\" button below and share the link.", React.DOM.br(null), React.DOM.br(null), 
+                // "Just hit the \"Start a new call\" button below and share the link.", React.DOM.br(null), React.DOM.br(null), 
                 // "This app is a ", React.DOM.a({href: "https://temasys.io/platform", target: "_blank"}, "SkylinkJS"), " tech demo and you can ", React.DOM.a({href: "https://github.com/Temasys/getaroom", target: "_blank"}, "fork it on github"), "."
               )
             )
           );
 
           // Push select MCU toggle checkbox.
-          outputHTML.push(
-            React.DOM.div({className: "link top"}, 
-              React.DOM.input({type: "checkbox", id: "mcu", name: "mcu", onClick: app.handleMCUClick}), " ", React.DOM.label({for: "mcu"}, "Use Skylink Media Relay")
-            )
-          );
+          // outputHTML.push(
+          //   React.DOM.div({className: "link top"}, 
+          //     React.DOM.input({type: "checkbox", id: "mcu", name: "mcu", onClick: app.handleMCUClick}), " ", React.DOM.label({for: "mcu"}, "Use Skylink Media Relay")
+          //   )
+          // );
 
-          // Push select force TURN toggle checkbox.
-          outputHTML.push(
-            React.DOM.div({className: "link"}, 
-              React.DOM.input({type: "checkbox", id: "forceTurn", name: "forceTurn", onClick: app.handleForceTURNClick}), " ", React.DOM.label({for: "forceTurn"}, "Force Skylink TURN")
-            )
-          );
+          // // Push select force TURN toggle checkbox.
+          // outputHTML.push(
+          //   React.DOM.div({className: "link"}, 
+          //     React.DOM.input({type: "checkbox", id: "forceTurn", name: "forceTurn", onClick: app.handleForceTURNClick}), " ", React.DOM.label({for: "forceTurn"}, "Force Skylink TURN")
+          //   )
+          // );
 
-          // Push select force TURN toggle checkbox.
-          outputHTML.push(
-            React.DOM.div({className: "link"}, 
-                React.DOM.input({type: "checkbox", id: "useHD", name: "useHD", onClick: app.handleHDClick}), " ", React.DOM.label({for: "useHD"}, "Use HD Resolution")
-            )
-          );
+          // // Push select force TURN toggle checkbox.
+          // outputHTML.push(
+          //   React.DOM.div({className: "link"}, 
+          //       React.DOM.input({type: "checkbox", id: "useHD", name: "useHD", onClick: app.handleHDClick}), " ", React.DOM.label({for: "useHD"}, "Use HD Resolution")
+          //   )
+          // );
           break;
 
         // -----------------------------
