@@ -10,7 +10,8 @@ define([
   'utils',
   'components/userareas',
   'components/controls',
-  'components/chat'
+  'components/chat',
+  'components/sidebar'
 
 ], function (
   React,
@@ -21,7 +22,8 @@ define([
   Utils,
   UserAreas,
   Controls,
-  Chat
+  Chat,
+  Sidebar
 
 ) {
 
@@ -717,6 +719,10 @@ define([
         className = className + ' chat';
       }
 
+      if(app.state.show.sidebar) {
+        className = className + ' sidebar';
+      }
+
       if (screensharingSupported) {
         className = className + ' enableScreensharing';
       }
@@ -724,11 +730,14 @@ define([
       return (
         React.DOM.div({className: className}, 
           React.DOM.div({onClick: app.handleShowControls}, 
-            UserAreas({state: app.state})
+            UserAreas({state: app.state}), 
+            Chat({state: app.state})
+
           ), 
-          Controls({state: app.state}), 
-          Chat({state: app.state})
+          Controls({state: app.state})
+          
         )
+        
       )
     }
   });

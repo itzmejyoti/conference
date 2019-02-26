@@ -1,5 +1,4 @@
 /** @jsx React.DOM */
-
 define([
   'react',
   'utils',
@@ -21,6 +20,7 @@ define([
    * The controls component.
    * @class Controls
    */
+
   var Controls = React.createClass({displayName: 'Controls',
 
     /**
@@ -28,6 +28,7 @@ define([
      * @method handleMCUClick
      * @for Controls
      */
+
     handleMCUClick: function(e) {
       this.props.state.room.flags.mcu = e.target.checked === true;
     },
@@ -263,10 +264,10 @@ define([
       var logoClassName = 'logo';
 
       logoClassName += app.props.state.room.status === Constants.RoomState.CONNECTED ? ' joinRoom' : '';
-      //logoClassName += app.props.state.room.states.mcuServerId ? ' recording' : '';
+      // logoClassName += app.props.state.room.states.mcuServerId ? ' recording' : '';
 
       // Push logo.
-      // outputHTML.push(React.DOM.div({className: logoClassName}, "getaroom.io"));
+      // outputHTML.push(<div className={logoClassName}>Conference</div>);
 
       switch (app.props.state.state) {
         // -----------------------------
@@ -280,38 +281,38 @@ define([
           );
 
           // Push description.
-          outputHTML.push(
-            React.DOM.div({className: "description"}, 
-              React.DOM.p(null, 
-                // React.DOM.small(null, "A SkylinkJS Tech Demo"), React.DOM.br(null), React.DOM.br(null), 
-                // "Start a FREE call", React.DOM.br(null), "with up to ", Configs.maxUsers, " people"
-              ), 
-              React.DOM.p(null, 
-                // "Just hit the \"Start a new call\" button below and share the link.", React.DOM.br(null), React.DOM.br(null), 
-                // "This app is a ", React.DOM.a({href: "https://temasys.io/platform", target: "_blank"}, "SkylinkJS"), " tech demo and you can ", React.DOM.a({href: "https://github.com/Temasys/getaroom", target: "_blank"}, "fork it on github"), "."
-              )
-            )
-          );
-
-          // Push select MCU toggle checkbox.
           // outputHTML.push(
-          //   React.DOM.div({className: "link top"}, 
-          //     React.DOM.input({type: "checkbox", id: "mcu", name: "mcu", onClick: app.handleMCUClick}), " ", React.DOM.label({for: "mcu"}, "Use Skylink Media Relay")
-          //   )
+          //   <div className="description">
+          //     <p>
+          //       <small>A Conference Tech Demo</small><br /><br />
+          //       Start a FREE call<br />with up to {Configs.maxUsers} people
+          //     </p>
+          //     <p>
+          //       Just hit the &quot;Start a new call&quot; button below and share the link.<br /><br />
+          //       This app is a <a href="https://temasys.io/platform" target="_blank">Conference</a> tech demo and you can <a href="https://github.com/jyotikumari14/conference" target="_blank">fork it on github</a>.
+          //     </p>
+          //   </div>
+          // );
+
+          // // Push select MCU toggle checkbox.
+          // outputHTML.push(
+          //   <div className="link top">
+          //     <input type="checkbox" id="mcu" name="mcu" onClick={app.handleMCUClick} /> <label for="mcu">Use Conference Media Relay</label>
+          //   </div>
           // );
 
           // // Push select force TURN toggle checkbox.
           // outputHTML.push(
-          //   React.DOM.div({className: "link"}, 
-          //     React.DOM.input({type: "checkbox", id: "forceTurn", name: "forceTurn", onClick: app.handleForceTURNClick}), " ", React.DOM.label({for: "forceTurn"}, "Force Skylink TURN")
-          //   )
+          //   <div className="link">
+          //     <input type="checkbox" id="forceTurn" name="forceTurn" onClick={app.handleForceTURNClick} /> <label for="forceTurn">Force Conference TURN</label>
+          //   </div>
           // );
 
           // // Push select force TURN toggle checkbox.
           // outputHTML.push(
-          //   React.DOM.div({className: "link"}, 
-          //       React.DOM.input({type: "checkbox", id: "useHD", name: "useHD", onClick: app.handleHDClick}), " ", React.DOM.label({for: "useHD"}, "Use HD Resolution")
-          //   )
+          //   <div className="link">
+          //       <input type="checkbox" id="useHD" name="useHD" onClick={app.handleHDClick} /> <label for="useHD">Use HD Resolution</label>
+          //   </div>
           // );
           break;
 
@@ -401,6 +402,6 @@ define([
       );
     }
   });
-
+ 
   return Controls;
 });

@@ -3,12 +3,14 @@
 define([
   'react',
   'constants',
-  'utils'
+  'utils',
+  'components/chat',
 
 ], function (
   React,
   Constants,
-  Utils
+  Utils,
+  Chat
 ) {
 
   /**
@@ -19,13 +21,20 @@ define([
 
     render: function() {
       var app = this;
+      var userStyle = {
+        width: "75%"
+      };
+      var sideStyle = {
+        width: "25%"
+      };
       var userAreaList = app.props.state.room.status === Constants.RoomState.CONNECTED ?
         UserAreaList({users: app.props.state.users}) : React.DOM.div({id: "noUser"});
 
       return (
-        React.DOM.section({id: "userareas", className: app.props.state.room.states.screensharing ? 'screensharing' : 'split' + Utils.keys(app.props.state.users).length}, 
+        React.DOM.section({id: "userareas", style: userStyle, className: app.props.state.room.states.screensharing ? 'screensharing' : 'split' + Utils.keys(app.props.state.users).length}, 
           userAreaList
         )
+
       );
     }
 

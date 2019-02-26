@@ -84,7 +84,9 @@ define([
         className += message.type === Constants.MessageType.ACTION ? ' action' : '';
 
         if (message.userId === 'getaroom.io') {
-          userName = 'getaroom.io';
+          // userName = 'getaroom.io';
+          userName = 'Conference';
+
 
         } else if (message.userId === 'MCU') {
           userName = 'MCU';
@@ -100,9 +102,14 @@ define([
           </div>
         );
       });
-
+      // var chatStyle = {
+      //         height: '100%', 
+      //         left: '89%',
+      //         width: '25%', 
+      //   }
       return (
-        <section id="chat">
+        
+        <section id="chat" >
             <div>
                 <div id="messages" onClick={app.handleFocus}>
                     <div>{outputHTML}</div>
@@ -116,6 +123,7 @@ define([
     }
 
   });
+    
 
   return Chat;
 });

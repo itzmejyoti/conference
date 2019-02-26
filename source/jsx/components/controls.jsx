@@ -264,10 +264,10 @@ define([
       var logoClassName = 'logo';
 
       logoClassName += app.props.state.room.status === Constants.RoomState.CONNECTED ? ' joinRoom' : '';
-      logoClassName += app.props.state.room.states.mcuServerId ? ' recording' : '';
+      // logoClassName += app.props.state.room.states.mcuServerId ? ' recording' : '';
 
       // Push logo.
-      outputHTML.push(<div className={logoClassName}>Conference</div>);
+      // outputHTML.push(<div className={logoClassName}>Conference</div>);
 
       switch (app.props.state.state) {
         // -----------------------------
@@ -281,39 +281,39 @@ define([
           );
 
           // Push description.
-          outputHTML.push(
-            <div className="description">
-              <p>
-                <small>A Conference Tech Demo</small><br /><br />
-                Start a FREE call<br />with up to {Configs.maxUsers} people
-              </p>
-              <p>
-                Just hit the &quot;Start a new call&quot; button below and share the link.<br /><br />
-                This app is a <a href="https://temasys.io/platform" target="_blank">Conference</a> tech demo and you can <a href="https://github.com/jyotikumari14/conference" target="_blank">fork it on github</a>.
-              </p>
-            </div>
-          );
+          // outputHTML.push(
+          //   <div className="description">
+          //     <p>
+          //       <small>A Conference Tech Demo</small><br /><br />
+          //       Start a FREE call<br />with up to {Configs.maxUsers} people
+          //     </p>
+          //     <p>
+          //       Just hit the &quot;Start a new call&quot; button below and share the link.<br /><br />
+          //       This app is a <a href="https://temasys.io/platform" target="_blank">Conference</a> tech demo and you can <a href="https://github.com/jyotikumari14/conference" target="_blank">fork it on github</a>.
+          //     </p>
+          //   </div>
+          // );
 
-          // Push select MCU toggle checkbox.
-          outputHTML.push(
-            <div className="link top">
-              <input type="checkbox" id="mcu" name="mcu" onClick={app.handleMCUClick} /> <label for="mcu">Use Conference Media Relay</label>
-            </div>
-          );
+          // // Push select MCU toggle checkbox.
+          // outputHTML.push(
+          //   <div className="link top">
+          //     <input type="checkbox" id="mcu" name="mcu" onClick={app.handleMCUClick} /> <label for="mcu">Use Conference Media Relay</label>
+          //   </div>
+          // );
 
-          // Push select force TURN toggle checkbox.
-          outputHTML.push(
-            <div className="link">
-              <input type="checkbox" id="forceTurn" name="forceTurn" onClick={app.handleForceTURNClick} /> <label for="forceTurn">Force Conference TURN</label>
-            </div>
-          );
+          // // Push select force TURN toggle checkbox.
+          // outputHTML.push(
+          //   <div className="link">
+          //     <input type="checkbox" id="forceTurn" name="forceTurn" onClick={app.handleForceTURNClick} /> <label for="forceTurn">Force Conference TURN</label>
+          //   </div>
+          // );
 
-          // Push select force TURN toggle checkbox.
-          outputHTML.push(
-            <div className="link">
-                <input type="checkbox" id="useHD" name="useHD" onClick={app.handleHDClick} /> <label for="useHD">Use HD Resolution</label>
-            </div>
-          );
+          // // Push select force TURN toggle checkbox.
+          // outputHTML.push(
+          //   <div className="link">
+          //       <input type="checkbox" id="useHD" name="useHD" onClick={app.handleHDClick} /> <label for="useHD">Use HD Resolution</label>
+          //   </div>
+          // );
           break;
 
         // -----------------------------

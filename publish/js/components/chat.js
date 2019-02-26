@@ -84,7 +84,9 @@ define([
         className += message.type === Constants.MessageType.ACTION ? ' action' : '';
 
         if (message.userId === 'getaroom.io') {
-          userName = 'getaroom.io';
+          // userName = 'getaroom.io';
+          userName = 'Conference';
+
 
         } else if (message.userId === 'MCU') {
           userName = 'MCU';
@@ -100,8 +102,13 @@ define([
           )
         );
       });
-
+      // var chatStyle = {
+      //         height: '100%', 
+      //         left: '89%',
+      //         width: '25%', 
+      //   }
       return (
+        
         React.DOM.section({id: "chat"}, 
             React.DOM.div(null, 
                 React.DOM.div({id: "messages", onClick: app.handleFocus}, 
@@ -116,6 +123,7 @@ define([
     }
 
   });
+    
 
   return Chat;
 });
