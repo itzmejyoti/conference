@@ -330,7 +330,7 @@ define([
           outputHTML.push(
             <div className="link joinRoom">
               Invite others to join this call at this link:<br />
-              <input type="text" value={location.toString()} onClick={app.handleLinkClick} readOnly />
+              <input type="text" value={location.toString()} onClick={app.handleLinkClick}  />
             </div>
           );
 

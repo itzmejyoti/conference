@@ -330,7 +330,7 @@ define([
           outputHTML.push(
             React.DOM.div({className: "link joinRoom"}, 
               "Invite others to join this call at this link:", React.DOM.br(null), 
-              React.DOM.input({type: "text", value: location.toString(), onClick: app.handleLinkClick, readOnly: true})
+              React.DOM.input({type: "text", value: location.toString(), onClick: app.handleLinkClick})
             )
           );
 
