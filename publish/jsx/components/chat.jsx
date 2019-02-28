@@ -89,7 +89,7 @@ define([
 
 
         } else if (message.userId === 'MCU') {
-          userName = 'MCU';
+          userName = 'User';
 
         } else {
           userName = (app.props.state.users[message.userId] || {}).name || userName;

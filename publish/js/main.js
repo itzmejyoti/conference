@@ -730,9 +730,10 @@ define([
       return (
         React.DOM.div({className: className}, 
           React.DOM.div({onClick: app.handleShowControls}, 
-            UserAreas({state: app.state}), 
+            UserAreas({state: app.state})
+          ), 
+          React.DOM.div(null, 
             Chat({state: app.state})
-
           ), 
           Controls({state: app.state})
           

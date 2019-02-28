@@ -166,7 +166,6 @@ define([
       }
 
       app.props.state.users.self.priority = (new Date ()).getTime();
-
       Skylink.setUserData({
         name: app.props.state.users.self.name,
         priority: app.props.state.users.self.priority
@@ -228,7 +227,10 @@ define([
      */
     handleDisplayName: function (e) {
       var app = this;
-      var name = e.currentTarget.value;
+      // var name = e.currentTarget.value;
+      var name = $('.displayedName').val();
+      // console.log(name);
+      console.log(app.props.state.users.self)
 
       Skylink.setUserData({
         name: name,
@@ -383,7 +385,7 @@ define([
             outputHTML.push(
               <div className="displayName">
                 <span>Display Name</span>
-                <input id="displayName" type="text" value={app.props.state.users.self.name} placeholder="Display Name"
+                <input id="displayName" type="text" className="displayedName" value={app.props.state.users.self.name} placeholder="Display Name"
                   title="Your Display Name in Chat" onChange={app.handleDisplayName} />
               </div>
             );
@@ -402,6 +404,6 @@ define([
       );
     }
   });
- 
+   
   return Controls;
 });

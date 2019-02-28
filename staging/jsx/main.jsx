@@ -731,8 +731,9 @@ define([
         <div  className={className}>
           <div onClick={app.handleShowControls}>
             <UserAreas state={app.state} />
+          </div>
+          <div>
             <Chat state={app.state} />
-
           </div>
           <Controls state={app.state} />
           

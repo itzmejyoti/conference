@@ -49,7 +49,7 @@ define([
     render: function() {
       var scope = this;
       var outputHTML = [];
-
+      
       Utils.forEach(scope.props.users, function (user, userId) {
         outputHTML.push(
           React.DOM.div({key: userId, className: 'userarea' + (user.video && user.video.screensharing ? ' screensharing' : '')}, 
